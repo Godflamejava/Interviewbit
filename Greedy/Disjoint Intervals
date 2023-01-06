@@ -1,0 +1,29 @@
+
+https://www.interviewbit.com/problems/disjoint-intervals/
+
+public class Solution {
+    public int solve(int[][] A) {
+        Arrays.sort(A,(a,b)->(a[1]-b[1]));
+        Stack<Pair> st = new Stack<>();
+        st.add(new Pair(A[0][0],A[0][1]));
+        for(int i=1;i<A.length;i++)
+        {
+            if(st.peek().b<A[i][0])
+            {
+            st.add(new Pair(A[i][0],A[i][1]));
+            }
+           
+        }
+        return st.size();
+    }
+    static class Pair{
+        
+        int a,b;
+        Pair(int a,int b)
+        {
+            this.a=a;
+            this.b=b;
+        }
+        
+    }
+}
